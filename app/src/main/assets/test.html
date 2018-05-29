@@ -1,0 +1,40 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <style type="text/css">
+      body,html,#container{
+        height: 100%;
+        margin: 0px;
+      }
+    </style>
+    <title>快速入门</title>
+</head>
+<body>
+<div id="container" tabindex="0"></div>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.6&key=4ab362ab0f15192ac556aa7943d8a6d9"></script>
+<script type="text/javascript">
+        var map = new AMap.Map('container',{
+            resizeEnable: true,
+            zoom: 10,
+            center: [116.480983, 40.0958]
+        });
+
+       AMap.service('AMap.Driving',function(){//回调函数
+
+         var transfer;
+        transOptions = {
+             map: map,
+         }
+
+             //实例化Transfer
+           transfer= new AMap.Driving(transOptions);
+
+                //根据起、终点坐标查询公交换乘路线
+          transfer.search([116.379028, 39.865042], [114.07233, 22.7086]);
+         });
+
+    </script>
+</body>
+</html>
